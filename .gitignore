@@ -1,8 +1,8 @@
 # Ignore everything
 *
 
-!.gitignore
 # Except
+!.gitignore
 !chouinard.docx
 !homework/
 !homework/*.md
