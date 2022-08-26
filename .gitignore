@@ -1,0 +1,10 @@
+# Ignore everything
+*
+
+!.gitignore
+# Except
+!chouinard.docx
+!homework/
+!homework/*.md
+!labs/
+!labs/*
