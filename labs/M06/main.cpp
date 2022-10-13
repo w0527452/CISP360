@@ -8,7 +8,8 @@ void showboard();
 
 const int ROW = 3;
 const int COL = 3;
-char Gboard[ROW][COL] = {{'*', '*', '*'},
+bool empty = true, draw = false;
+char board[ROW][COL] = {{'*', '*', '*'},
                          {'*', '*', '*'},
                          {'*', '*', '*'}};
 
@@ -21,32 +22,39 @@ void init() {
     int num = 0;
 
 
-    cout << "Let's play Tic-Tac-Toe!\nPlayer 1 enter your name: ";
+
+    cout << "Player 1 name: ";
     cin >> Player1;
     cout << endl;
-    cout << Player1 << ", you are X's! You will also have the first turn.";
+    cout << Player1 << ", you are X and will go first.";
     cout << endl;
     cout << endl;
 
 
-    cout << "Player 2, enter your name: ";
+    cout << "Player 2 name: ";
     cin >> Player2;
     cout << endl;
-    cout << Player2 << ", you are O's!";
+    cout << Player2 << ", you are O";
     cout << endl << endl;
 
     showboard();
 
     do {
-        cout << "To choose a position enter in the row number \n[SPACE] then the column number: ";
+        if (!empty) {
+            cout << "Choose an empty square" << endl;
+        }
+        cout << "To choose a square, enter in the row and column number separated by a space: ";
         cin >> ROW;
         cin >> COL;
-        if (Gboard[ROW][COL] == '*') {
-            Gboard[ROW][COL] = Turn;
+        if (board[ROW][COL] == '*') {
+            empty = true;
+            board[ROW][COL] = Turn;
             if (Turn == 'X')
                 Turn = 'O';
             else
                 Turn = 'X';
+        } else {
+            empty = false;
         }
         cout << endl;
         showboard();
@@ -60,12 +68,36 @@ void init() {
 void showboard() {
     cout << "     0   1   2";
     cout << endl << endl;
-    cout << " 0  " << Gboard[0][0] << " | " << Gboard[0][1] << " | " << Gboard[0][2] << endl;
+    cout << " 0  " << board[0][0] << " | " << board[0][1] << " | " << board[0][2] << endl;
     cout << "   ___|___|___\n";
-    cout << " 1  " << Gboard[1][0] << " | " << Gboard[1][1] << " | " << Gboard[1][2] << endl;
+    cout << " 1  " << board[1][0] << " | " << board[1][1] << " | " << board[1][2] << endl;
     cout << "   ___|___|___\n";
-    cout << " 2  " << Gboard[2][0] << " | " << Gboard[2][1] << " | " << Gboard[2][2] << endl;
+    cout << " 2  " << board[2][0] << " | " << board[2][1] << " | " << board[2][2] << endl;
     cout << "      |" << "   |" << endl;
+}
+
+bool gameover() {
+    //checking the win for Simple Rows and Simple Column
+    for (int i = 0; i < 3; i++)
+        if (board[i][0] == board[i][1] && board[i][0] == board[i][2] ||
+            board[0][i] == board[1][i] && board[0][i] == board[2][i])
+            return false;
+
+    //checking the win for both diagonal
+
+    if (board[0][0] == board[1][1] && board[0][0] == board[2][2] ||
+        board[0][2] == board[1][1] && board[0][2] == board[2][0])
+        return false;
+
+    //Checking the game is in continue mode or not
+    for (int i = 0; i < 3; i++)
+        for (int j = 0; j < 3; j++)
+            if (board[i][j] != 'X' && board[i][j] != 'O')
+                return true;
+
+    //Checking the if game already draw
+    draw = true;
+    return false;
 }
 
 int main() {
