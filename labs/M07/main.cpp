@@ -137,7 +137,7 @@ void results( int found, int needle ) {
 int main() {
     // Declare and instantiate vars (yes, I used 11 elements for no reason whatsoever)
     int numbers[] = {24, 48, 93, 20, 19, 49, 53, 84, 46, 22, 90};
-    int found, needle = 93;
+    int found, needle = 1;
 
     // Linear Search
     found = myLinearSearch(numbers, 11, needle);
