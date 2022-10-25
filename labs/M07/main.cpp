@@ -1,8 +1,18 @@
 #include <iostream>
 
+/**
+ * Mark Chouinard | W0527452 | 10/18/22 | Array Search Lab
+ *
+ * Write a program that has an array of at least 20 integers.
+ * It should call a function that uses the linear search algorithm to locate one of the values.
+ * The function should keep a count of the number of comparisons it makes until it finds the value.
+ * The program then should call a function that uses the binary search algorithm to locate the same value.
+ * It should also keep count of the number of comparisons it makes.  Display these values on the screen.
+ */
+
 using namespace std;
 
-// Func definitions
+// Func definitions (not needed after refactor)
 void printArray(int[], int);
 
 /**
@@ -24,11 +34,25 @@ void swap(int &a, int &b) {
  * @param n
  */
 void printArray(int numbers[], int n) {
-    cout << "Array\n";
+    cout << "Array Contents:\n";
     for (int i = 0; i < n; i++) {
         cout << numbers[i] << " ";
     }
     cout << endl;
+}
+
+/**
+ * Helper func to output results message
+ *
+ * @param found Subscript where needle was found or -1 for not found
+ * @param needle Value we were searching for in array
+ */
+void showResults(int found, int needle) {
+    if (found != -1) {
+        cout << needle << " found at subscript " << found << endl << endl;
+    } else {
+        cout << needle << " not found in array\n\n";
+    }
 }
 
 /**
@@ -55,7 +79,7 @@ void bubbleSort(int arr[], int n) {
  * Binary search array for int i
  *
  * @param arr
- * @param lo    lowest key/subscript to search
+ * @param lo    lower key/subscript to search
  * @param hi    Upper key/subscript to search
  * @param i     int to search for in array
  * @return
@@ -95,7 +119,7 @@ int myBinarySearch(int arr[], int lo, int hi, int i) {
 }
 
 /**
- * Sequentially search array for i
+ * Sequentially search array for int
  *
  * @param arr
  * @param length
@@ -120,32 +144,19 @@ int myLinearSearch(int arr[], int length, int i) {
     return -1;
 }
 
-/**
- * Output results message
- *
- * @param found Subscript where needle was found or -1 for not found
- * @param needle Value we were searching for in array
- */
-void results( int found, int needle ) {
-    if (found != -1) {
-        cout << needle << " found at subscript  " << found << endl << endl;
-    } else {
-        cout << needle << " not found in array\n\n";
-    }
-}
-
 int main() {
-    // Declare and instantiate vars (yes, I used 11 elements for no reason whatsoever)
-    int numbers[] = {24, 48, 93, 20, 19, 49, 53, 84, 46, 22, 90};
-    int found, needle = 1;
+    // Declare and instantiate vars
+    int numbers[] = {100, 48, 93, 20, 19, 49, 53, 84, 46, 27, 90, 56, 78, 39, 59, 22, 24, 14, 72, 80, 67};
+    int found, needle = 3;
 
-    // Linear Search
-    found = myLinearSearch(numbers, 11, needle);
-    results( found, needle );
+    cout << "Linear\n";
+    found = myLinearSearch(numbers, 20, needle);
+    showResults(found, needle);
 
-    // Binary Search
-    found = myBinarySearch(numbers, 0, 10, needle);
-    results( found, needle );
+    cout << "Binary\n";
+    found = myBinarySearch(numbers, 0, 19, needle);
+    showResults(found, needle);
 
     return 0;
 }
+
