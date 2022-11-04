@@ -8,6 +8,7 @@
  * modified  to print out the array contents after each pass of the sort.
  */
 #include <iostream>
+
 using namespace std;
 
 /**
@@ -28,8 +29,9 @@ void swap(int &a, int &b) {
  * @param numbers
  * @param n
  */
-void printArray(int numbers[], int n, const string& label ) {
-    if ( !label.empty() ) {
+void printArray(int numbers[], int n, const string &label = "") {
+    // Only output label if not empty
+    if (!label.empty()) {
         cout << label << endl;
     }
     for (int i = 0; i < n; i++) {
@@ -44,18 +46,17 @@ void printArray(int numbers[], int n, const string& label ) {
  * @param arr
  * @param n
  */
-void bubbleSort( int arr[], int n ) {
+void bubbleSort(int arr[], int n) {
 
-    cout << "Original contents\n";
-    printArray( arr, n, "Original contents (bubble)" );
-    for ( int i = 0; i < n; i++ )  {
-        for ( int j = i + 1; j < n; j++ ) {
-            if ( arr[j] < arr[i] ) {
-                swap( arr[j], arr[i] );
+    printArray(arr, n, "Original contents (bubble)");
+    for (int i = 0; i < n; i++) {
+        for (int j = i + 1; j < n; j++) {
+            if (arr[j] < arr[i]) {
+                swap(arr[j], arr[i]);
             }
-            printArray( arr, n, "" );
         }
-        printArray( arr, n, "" );
+        // Print array after pass
+        printArray(arr, n);
     }
 }
 
@@ -65,29 +66,36 @@ void bubbleSort( int arr[], int n ) {
  * @param arr
  * @param n
  */
-void selectionSort( int arr[], int n ) {
-    int min;
-    printArray( arr, n, "Original contents (selection)" );
-    for ( int i = 0; i < n-1; i++ ) {
+void selectionSort(int arr[], int n) {
+    int i, j, min;
+
+    printArray(arr, n, "Original contents (selection)");
+
+    for (i = 0; i < n - 1; i++) {
+
         min = i;
-        for ( int j = i + 1; j < n; j++ ) {
-            if ( arr[j] < arr[min] ) {
+        for (j = i + 1; j < n; j++) {
+            if (arr[j] < arr[min]) {
                 min = j;
-                swap( arr[i], arr[min] );
             }
-            printArray( arr, n, "" );
         }
-        printArray( arr, n, "" );
+
+        if (min != i) {
+            swap(arr[min], arr[i]);
+        }
+
+        // Print array after pass
+        printArray(arr, n);
     }
 }
 
 int main() {
     int len = 8;
-    int bubble[] = {18, 22, 4, 89, 48, 1, 99, 35 };
-    int selection[] = {18, 22, 4, 89, 48, 1, 99, 35 };
+    int bubble[] = {18, 22, 4, 89, 48, 1, 99, 35};
+    int selection[] = {18, 22, 4, 89, 48, 1, 99, 35};
 
-    bubbleSort( bubble, len );
-    selectionSort( selection, len );
+    bubbleSort(bubble, len);
+    selectionSort(selection, len);
 
     return 0;
 }
