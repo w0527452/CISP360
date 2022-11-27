@@ -13,8 +13,8 @@ int MemberType::getBought() const {
     return bought;
 }
 
-void MemberType::setBought(int bought) {
-    MemberType::bought = bought;
+void MemberType::setBought(int amount) {
+    MemberType::bought = amount;
 }
 
 
@@ -22,8 +22,8 @@ int MemberType::getSpent() const {
     return spent;
 }
 
-void MemberType::setSpent(int spent) {
-    MemberType::spent = spent;
+void MemberType::setSpent(int amount) {
+    MemberType::spent = amount;
 }
 
 const string &MemberType::getName() const {
@@ -34,16 +34,25 @@ void MemberType::setName(const string &name) {
     MemberType::name = name;
 }
 
-int MemberType::spend(int amount) {
+void MemberType::spend(int amount, bool output) {
     this->spent += amount;
 
-    return this->spent;
+    if (output) {
+        cout << this->getName() << " spent $" << amount << endl;
+    }
 }
 
-int MemberType::buy(int amount) {
+void MemberType::buy(int amount, bool output) {
     this->bought += amount;
 
-    return this->bought;
+    if (output) {
+        cout << this->getName() << " bought " << amount << " books" << endl;
+    }
+}
+
+void MemberType::summary() {
+    cout << this->getName() << "(ID " << this->getId() << ")" << " has spent $" << this->getSpent() << " and bought "
+         << this->getBought() << " books" << endl;
 }
 
 MemberType::MemberType(int id, int bought, int spent, const string &name) : ID(id), bought(bought), spent(spent),
@@ -51,8 +60,6 @@ MemberType::MemberType(int id, int bought, int spent, const string &name) : ID(i
 
 MemberType::MemberType() {}
 
-void MemberType::summary() {
-    cout << this->getName() << "(ID " << this->getId() << ")" << " has spent $" << this->getSpent() << " and bought " << this->getBought() << " books" << endl;
-}
+
 
 

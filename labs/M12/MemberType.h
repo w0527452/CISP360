@@ -6,6 +6,9 @@
 #define M12_MEMBERTYPE_H
 using namespace std;
 
+/**
+ * MemberType class
+ */
 class MemberType {
 private:
     int ID, bought, spent;
@@ -31,9 +34,9 @@ public:
 
     void setName(const string &name);
 
-    int spend( int amount );
+    void spend( int amount, bool output = false );
 
-    int buy( int amount );
+    void buy( int amount, bool output = false );
 
     void summary();
 
