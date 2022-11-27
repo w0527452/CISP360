@@ -1,0 +1,3 @@
+/Users/mark/Documents/Classes/2022/Fall/CISP360/labs/M12/cmake-build-debug/CMakeFiles/M12.dir
+/Users/mark/Documents/Classes/2022/Fall/CISP360/labs/M12/cmake-build-debug/CMakeFiles/edit_cache.dir
+/Users/mark/Documents/Classes/2022/Fall/CISP360/labs/M12/cmake-build-debug/CMakeFiles/rebuild_cache.dir
