@@ -32,3 +32,15 @@ const string &MemberType::getName() const {
 void MemberType::setName(const string &name) {
     MemberType::name = name;
 }
+
+int MemberType::spend(int amount) {
+    this->spent += amount;
+
+    return this->spent;
+}
+
+int MemberType::buy(int amount) {
+    this->bought += amount;
+
+    return this->bought;
+}

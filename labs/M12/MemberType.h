@@ -27,6 +27,9 @@ public:
 
     void setName(const string &name);
 
+    int spend( int amount );
+
+    int buy( int amount );
 
 };
 
