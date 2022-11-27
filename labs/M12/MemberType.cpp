@@ -1,4 +1,5 @@
 #include "MemberType.h"
+#include <iostream>
 
 int MemberType::getId() const {
     return ID;
@@ -49,3 +50,9 @@ MemberType::MemberType(int id, int bought, int spent, const string &name) : ID(i
                                                                             name(name) {}
 
 MemberType::MemberType() {}
+
+void MemberType::summary() {
+    cout << this->getName() << "(ID " << this->getId() << ")" << " has spent $" << this->getSpent() << " and bought " << this->getBought() << " books" << endl;
+}
+
+

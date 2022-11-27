@@ -35,6 +35,8 @@ public:
 
     int buy( int amount );
 
+    void summary();
+
 };
 
 
