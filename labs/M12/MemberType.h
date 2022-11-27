@@ -11,6 +11,10 @@ private:
     int ID, bought, spent;
     string name;
 public:
+    MemberType(int id, int bought, int spent, const string &name);
+
+    MemberType();
+
     int getId() const;
 
     void setId(int id);

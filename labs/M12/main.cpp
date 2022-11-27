@@ -3,6 +3,13 @@
 
 using namespace std;
 
+void output(MemberType member) {
+    cout << member.getName() << " spend total: " << member.getSpent() << endl;
+    cout << "total after spending 35: " << member.spend(35) << endl;
+    cout << member.getName() << " buy total: " << member.getBought() << endl;
+    cout << "total after buying 40: " << member.buy(40) << endl;
+}
+
 void demoMemberType() {
     // create nullptr
     MemberType *mark = nullptr;
@@ -13,16 +20,21 @@ void demoMemberType() {
     mark->setId(1);
     mark->setSpent(20);
 
-    cout << "Mark spend total: " << mark->getSpent() << endl;
-    cout << "total after spending 35: " << mark->spend(35) << endl;
-    cout << "Mark buy total: " << mark->getBought() << endl;
-    cout << "total after buying 40: " << mark->buy(40) << endl;
+    output(*mark);
 
     // Cleanup
     delete mark;
     mark = nullptr;
 
-    
+    cout << endl << endl;
+
+    mark = new MemberType(2, 125, 200, "Alex");
+
+    output(*mark);
+
+    // Cleanup
+    delete mark;
+    mark = nullptr;
 
 }
 

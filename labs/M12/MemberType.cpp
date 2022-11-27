@@ -44,3 +44,8 @@ int MemberType::buy(int amount) {
 
     return this->bought;
 }
+
+MemberType::MemberType(int id, int bought, int spent, const string &name) : ID(id), bought(bought), spent(spent),
+                                                                            name(name) {}
+
+MemberType::MemberType() {}
