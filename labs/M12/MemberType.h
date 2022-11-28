@@ -38,7 +38,7 @@ public:
 
     void buy( int amount, bool output = false );
 
-    void summary();
+    void summary() const;
 
 };
 

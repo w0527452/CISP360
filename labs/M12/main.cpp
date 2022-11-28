@@ -16,37 +16,38 @@
 
 using namespace std;
 
+/**
+ * Test the MemberType class
+ */
 void demoMemberType() {
-    // create nullptr
-    MemberType *mark = nullptr;
-    // instantiate/assign MemberType to pointer
-    mark = new MemberType;
+    // Ins
+    MemberType mark;
+    // show initial object vals
+    mark.summary();
     // set things
-    mark->setName("Mark");
-    mark->setBought(5);
-    mark->setId(1);
-    mark->setSpent(20);
+    mark.setName("Mark");
+    mark.setBought(5);
+    mark.setId(1);
+    mark.setSpent(20);
     // show and do things
-    mark->summary();
-    mark->buy(40, true);
-    mark->spend(25, true);
-    mark->summary();
+    mark.summary();
+    mark.spend(25, true);
+    mark.buy(40, true);
+    mark.summary();
 
     cout << endl << endl;
 
-    // create nullptr
+    // dynamic allocation
     MemberType *alex = nullptr;
     // Constructor with everything
     alex = new MemberType(2, 125, 200, "Alex");
     // show and do things
     alex->summary();
-    alex->buy(20, true);
     alex->spend(30, true);
+    alex->buy(20, true);
     alex->summary();
 
     // Cleanup
-    delete mark;
-    mark = nullptr;
     delete alex;
     alex = nullptr;
 

@@ -50,7 +50,7 @@ void MemberType::buy(int amount, bool output) {
     }
 }
 
-void MemberType::summary() {
+void MemberType::summary() const {
     cout << this->getName() << "(ID " << this->getId() << ")" << " has spent $" << this->getSpent() << " and bought "
          << this->getBought() << " books" << endl;
 }
@@ -58,7 +58,12 @@ void MemberType::summary() {
 MemberType::MemberType(int id, int bought, int spent, const string &name) : ID(id), bought(bought), spent(spent),
                                                                             name(name) {}
 
-MemberType::MemberType() {}
+MemberType::MemberType() {
+    this->name = "";
+    this->bought = 0;
+    this->spent = 0;
+    this->ID = 0;
+}
 
 
 
