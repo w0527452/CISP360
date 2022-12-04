@@ -1,6 +1,10 @@
 //
 // Created by Mark Chouinard on 12/3/22.
 //
+#include <iostream>
+#include <iomanip>
+#include <cmath>
+
 #ifndef M13_MORTGAGE_H
 #define M13_MORTGAGE_H
 
@@ -8,10 +12,15 @@
 class Mortgage {
 private:
     int years, loanAmount, numPayments;
-    double rate, payment, totalPayments;
+    double rate, payment;
+
+    // only used by default constructor - no public access
+    void getDetails();
+
 public:
     Mortgage();
-    Mortgage(int years, double rate, double amount );
+
+    Mortgage(int years, double rate, double amount);
 
     int getYears() const;
 
@@ -33,6 +42,9 @@ public:
 
     double totalPaid() const;
 
+    double totalInterest() const;
+
+    void showDetails();
 };
 
 

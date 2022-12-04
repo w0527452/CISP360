@@ -1,68 +1,28 @@
 #include <iostream>
 #include "Mortgage.h"
-#include <iomanip>
-#include <limits>
+
+
+/**
+ * Mark Chouinard | 12/3/22 | M13 LAB | W0527452
+ *
+ * Design a class that will determine the monthly payment on a home mortgage.
+ */
 
 using namespace std;
 
-Mortgage getInput() {
-    int years, amount;
-    double rate;
-    bool amountValid = false, rateValid = false, yearsValid = false;
-
-    Mortgage *house = nullptr;
-
-
-    do {
-        cout << "Amount of loan: ";
-        cin >> amount;
-        if (cin.good() && amount > 0) {
-            amountValid = true;
-        } else {
-            cin.clear();
-            cin.ignore(numeric_limits<streamsize>::max(), '\n');
-            cout << "Invalid input; please re-enter amount." << endl;
-        }
-    } while (!amountValid);
-
-    do {
-        cout << "Percentage Rate: ";
-        cin >> rate;
-        if (cin.good() && rate > 1) {
-            rateValid = true;
-        } else {
-            cin.clear();
-            cin.ignore(numeric_limits<streamsize>::max(), '\n');
-            cout << "Invalid input; please re-enter rate." << endl;
-        }
-    } while (!rateValid);
-
-    do {
-        cout << "Number of Years: ";
-        cin >> years;
-        if (cin.good() && years > 0) {
-            yearsValid = true;
-        } else {
-            cin.clear();
-            cin.ignore(numeric_limits<streamsize>::max(), '\n');
-            cout << "Invalid input; please re-enter years." << endl;
-        }
-    } while (!yearsValid);
-
-    house = new Mortgage(years, rate, amount);
-
-    return *house;
-
-}
-
 int main() {
 
+    // Default constructor prompts for all details
     Mortgage house;
+    house.showDetails();
 
-    house = getInput();
-
-    cout << fixed << setprecision(2) << house.getPayment() << endl;
-    cout << fixed << setprecision(2) << "Total Paid: " << house.totalPaid() << endl;
+// Different constructor example(Screenshot #3)
+//    Pointer and whatnot
+//    Mortgage *house;
+//    house = new Mortgage(25, 7.5, 450500);
+//    house->showDetails();
+//    delete house;
+//    house = nullptr;
 
     return 0;
 }
